@@ -191,7 +191,7 @@ One of the issues with R is that error messages can be rather obscure.  The most
 
 **8. Projects in RStudio**
 
-One very nice feature of RStudio is its ability to create _Projects_ which help a lot in keeping data (e.g. `.csv`-type text files, or R's internal `.RData` format) and scripts (e.g. files that end in `.R`, or .`Rmd`) organized.  Also, multiple Projects can reside on the same machine (or user account on the machine), which helps keep your work organized.  Project folders can be created internally in RStudio, but it may be easier to create the folders outside of RStudio, and then use the `File > New Project > Existing Directory` dialog to browse to that folder or directory.  (Note (don't do this now):  A useful folder or directory hierarchy would be created by using the two subfolders or directories to the working directories described above, the `R` one for code, the `.RData` workspace file, and `*.R` and `*.Rmd` source files, and the other `data` to download data into.  Then in the New Project dialog, one would browse to, say `c:/Users/bartlein/Documents/geog495/R/` (Windows), or `User/Documents/R/` (OS X/MacOS) to create the Project file (`R.Rproj`), and download data to `c:/Users/bartlein/Documents/geog495/data/` (Windows), or `User/Documents/data/` (OS X/MacOS).)  Projects can also be created on the virtual machine. 
+One very nice feature of RStudio is its ability to create _Projects_ which help a lot in keeping data (e.g. `.csv`-type text files, or R's internal `.RData` format) and scripts (e.g. files that end in `.R`, or .`Rmd`) organized.  Also, multiple Projects can reside on the same machine (or user account on the machine), which helps keep your work organized.  Project folders can be created internally in RStudio, but it may be easier to create the folders outside of RStudio, and then use the `File > New Project > Existing Directory` dialog to browse to that folder or directory.  (Note (don't do this now):  A useful folder or directory hierarchy would be created by using the two subfolders or directories to the working directories described above, the `R` one for code, the `.RData` workspace file, and `*.R` and `*.Rmd` source files, and the other `data` to download data into.  Then in the New Project dialog, one would browse to, say `c:/Users/mslucash/Documents/geog495/R/` (Windows), or `User/Documents/R/` (OS X/MacOS) to create the Project file (`R.Rproj`), and download data to `c:/Users/mslucash/Documents/geog495/data/` (Windows), or `User/Documents/data/` (OS X/MacOS).)  Projects can also be created on the virtual machine. 
 
 It's also possible to easily begin where you left off, by browsing to a Project file, and simply clicking on it to start RStudio.
 
@@ -232,8 +232,8 @@ getwd()
 
 If you're not in the working directory, you can use the RStudio `Session > Set Working Directory > Choose Working Directory...` dialog.  You can also "strong-arm" the change of the working directory using the `setwd()` function:  
 
-    setwd("C:/Users/bartlein/Documents/geog495/data/") # Windows
-    setwd("C:\\Users\\bartlein\\Documents\\geog495\\data\\") # classical Windows
+    setwd("C:/Users/mslucash/Documents/geog495/data/") # Windows
+    setwd("C:\\Users\\mslucash\\Documents\\geog495\\data\\") # classical Windows
     
     setwd("R:/geog495_1/Student_Data/userid/") # virtual machine
     setwd("R:\\geog495_1\\Student_Data\\userid\\") # virtual machine -- classical Windows foremat
@@ -255,10 +255,10 @@ Importing a data set or shape file into R is a two-step procedure:  1) getting o
 
 To __*download*__ the Summit Cr. data set, (Step 1)
 
-1. right-click on a link to a data set on a web page, like this one:  [[sumcr.csv]](https://pjbartlein.github.io/GeogDataAnalysis/data/csv/sumcr.csv)
-2. then save the file (using Internet Explorer, click on "Save target as..." or for Firefox, click on "Save link as...", or using Safari on the Mac, click on "Download Linked Files As…"
+1. right-click on a link to a data set on a web page, like this one:  [[sumcr.csv]](https://github.com/mslucash/GeogDataAnalysis/blob/main/data/csv/sumcr.csv)
+2. then save the file. In Windows, click on Raw (button on right), then right click on data and hit "Save as". Navigate to where you want to store the file and use the csv default file type.
 3. then browse to the `data` subfolder in the working folder created above and
-4. save the file.  
+
 
 Recall that the data folders are:
 
@@ -280,7 +280,7 @@ sumcr <- read.csv("R:/geog495_1/Student_Data/userid/data/sumcr.csv")
 and on the Mac, type the following
 
 ```{r echo=TRUE, eval=FALSE}
-sumcr <- read.csv("/Users/bartlein/Documents/geog495/data/sumcr.csv")  
+sumcr <- read.csv("/Users/mslucash/Documents/geog495/data/sumcr.csv")  
 ```
 
 where, as usual, `"userid"` is your userid.  Make sure that the file paths are bracketed by quotation marks.
