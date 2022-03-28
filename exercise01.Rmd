@@ -150,12 +150,13 @@ After a brief pause, RStudio will open.
 	
 *Arranging and Running RStudio*
 
-RStudio is flexible enough in its layout (Tools > Options > Pane Layout), that individual work habits can be accommodated.  A typical layout might be:
+RStudio is flexible enough in its layout (Tools > Global Options > Pane Layout), that individual work habits can be accommodated.  A typical layout might be:
 
 - upper left:  R script (e,g, filename.R) editing window
 - lower left:  R Console
-- upper right:  Plots pane
-- lower right:  a pane with Workspace, History, Files, Packages and Help tabs
+- upper right:  a pane with Workspace, History, Files, Packages and Help tabs
+- lower right:  Plots pane
+
 
 Useful menus in RStudio include:
 
@@ -197,7 +198,7 @@ It's also possible to easily begin where you left off, by browsing to a Project 
 
 **9. A Data Set**
 
-The Summit Cr. geomorphic data consists of 88 observations of 11 variables along an 0.8-km stretch of Summit Cr. in eastern Oregon. This data set was collected by Pat McDowell, Frank Magilligan and their students as part of their study of the effects of cattle "exclosures" on the morphology of stream channels. They divided this stretch of Summit Cr. into individual "hydrologic units" (HU's) that were either pools, shallow "riffles," or straight "glides." The overall study area is divided into three sections: an upstream reach (reach A) in which cattle are permitted to graze, a middle reach (reach B) from which cattle have been excluded, and a downstream reach (reach C), in which cattle were again permitted to graze.
+The Summit Creek geomorphic data consists of 88 observations of 11 variables along an 0.8-km stretch of Summit Cr. in eastern Oregon. This data set was collected by Pat McDowell, Frank Magilligan and their students as part of their study of the effects of cattle "exclosures" on the morphology of stream channels. They divided this stretch of Summit Cr. into individual "hydrologic units" (HU's) that were either pools, shallow "riffles," or straight "glides." The overall study area is divided into three sections: an upstream reach (reach A) in which cattle are permitted to graze, a middle reach (reach B) from which cattle have been excluded, and a downstream reach (reach C), in which cattle were again permitted to graze.
 
 The dataset contains the following information:
 
