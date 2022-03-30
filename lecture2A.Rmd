@@ -73,7 +73,7 @@ Read the `cities.csv` file, using an explicit path:
 
 ```{r read }
 # read a .csv file
-csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/cities.csv"
+csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis/data/csv/cities.csv"
 cities <- read.csv(csvfile)
 ```
 
@@ -146,7 +146,7 @@ When data are in some kind of order (as in time), index values contain some usef
 ```{r specmap}
 # use Specmap delta-O18 data
 
-csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/specmap.csv"
+csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis/data/csv/specmap.csv"
 specmap <- read.csv(csvfile)
 ```
 
