@@ -32,10 +32,10 @@ Read the two data sets if they are not already in the workspace or environment. 
 
 ```{r read2}
 # adjust the paths to reflect the local environment
-csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/specmap.csv"
+csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis/data/csv/specmap.csv"
 specmap <- read.csv(csvfile)
 
-csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/scanvote.csv"
+csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis/data/csv/scanvote.csv"
 scanvote <- read.csv(csvfile)
 ```
 
