@@ -196,7 +196,7 @@ pre code {
   addKlippy('right', 'top', 'auto', '1', 'Copy code', 'Copied!');
 </script>
 <p>
-<span style="color: #00cc00;">NOTE: This page has been revised for Winter 2021, but may undergo further edits.</span>
+<span style="color: #00cc00;">NOTE: This page has been revised for Spring 2022, but may undergo further edits.</span>
 </p>
 <p>Note: Ordinarily, learning how to download and “import” files into R/RStudio is an important part of climbing R’s steepish learning curve. To make it easier to replicate the lectures and to play with the code, here is a workaround that will load all of the individual data sets that are used in the lectures.</p>
 <p>First, make sure that after starting RStudio, that the working directory is indeed the one created while doing Exercise 1. To reiterate, the directories are as follows:</p>
@@ -237,7 +237,7 @@ rm(list=ls(all=TRUE))</code></pre>
 <p>Download the csv file from github (see path on L58). Click on the file. Hit the RAW button. Right click and hit Save As and save it with the appropriate name (cities.csv or specmap.csv)</p>
 <p>Read the <code>cities.csv</code> file, using an explicit path:</p>
 <pre class="r"><code># read a .csv file
-csvfile &lt;- &quot;C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GEOG_495_Spring2022/data/csv/cities.csv&quot;
+csvfile &lt;- &quot;C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/cities.csv&quot;
 cities &lt;- read.csv(csvfile)</code></pre>
 <p>(What’s happening above is that first the string object <code>csvfile</code> is created by assigning (i.e. using the assignment operator <code>&lt;-</code>, which is pronounced “gets”) the string <code>/Users/bartlein/geog495/data/csv/cities.csv</code> (the path to the file) and then this object is operated on the the <code>read.csv()</code> function, to create the object <code>cities</code>.) <em>Adjust the path to reflect your own setup, on a Mac, Windows, or VM.</em></p>
 <p>Get some summary information about the <code>cities</code> “data frame”. The <code>names()</code> function lists the variables or attributes:</p>
@@ -310,7 +310,7 @@ detach(cities)</code></pre>
 <p>When data are in some kind of order (as in time), index values contain some useful information. Read and attach the <code>specmap.csv</code> file, and then plot the delta-O18 (oxygen isotope) values.</p>
 <pre class="r"><code># use Specmap delta-O18 data
 
-csvfile &lt;- &quot;C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GEOG_495_Spring2022/data/csv/specmap.csv&quot;
+csvfile &lt;- &quot;C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/specmap.csv&quot;
 specmap &lt;- read.csv(csvfile)</code></pre>
 <pre class="r"><code># attach specmap and plot
 attach(specmap)

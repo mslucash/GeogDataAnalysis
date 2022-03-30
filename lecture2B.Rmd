@@ -1,0 +1,166 @@
+---
+title: "Univariate Plots"
+output: 
+  html_document:
+    fig_caption: no
+    number_sections: yes
+    toc: yes
+    toc_float: false
+    collapsed: no
+---
+
+```{r set-options, echo=FALSE}
+options(width = 105)
+knitr::opts_chunk$set(dev='png', dpi=300, cache=FALSE)
+pdf.options(useDingbats = TRUE)
+klippy::klippy(position = c('top', 'right'))
+```
+
+<p><span style="color: #00cc00;">NOTE:  This page has been revised for Winter 2021, but may undergo further edits.</span></p>
+
+[[Back to top]](lec02.html)
+
+# Univariate Summary Plots #
+
+Summary plots display an object or a graph that gives a more concise expression of the location, dispersion, and distribution of a variable than an enumerative plot, but this comes at the expense of some loss of information:  In a summary plot, it is no longer possible to retrieve the individual data value, but this loss is usually matched by the gain in understanding that results from the efficient representation of the data. Summary plots generally prove to be much better than the enumerative plots in revealing the distribution of the data.
+
+Data files for these examples (download to working directory):
+[[specmap.csv]](https://github.com/mslucash/GeogDataAnalysis/tree/main/data/csv/specmap.csv)
+[[scanvote.csv]](https://github.com/mslucash/GeogDataAnalysis/tree/main/data/csv/scanvote.csv)
+
+Read the two data sets if they are not already in the workspace or environment.  The `scanvote` data set will be explained below.
+
+```{r read2}
+# adjust the paths to reflect the local environment
+csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/specmap.csv"
+specmap <- read.csv(csvfile)
+
+csvfile <- "C:/Users/mlucash/OneDrive - University Of Oregon/Documents/GitHub/GeogDataAnalysis_495_Spring2022/data/csv/scanvote.csv"
+scanvote <- read.csv(csvfile)
+```
+
+## Summary Plots ##
+
+### Histograms ###
+
+Histograms are a type of bar chart that displays the counts or relative frequencies of values falling in different class intervals or ranges. 
+
+```{r histogram}
+# use Specmap O-18 data [specmap.csv]
+attach(specmap)
+# histogram
+hist(O18)
+```
+
+The overall impression one gets about the distribution of a variable depends somewhat on the way the histogram is constructed:  fewer bars give a more generalized view, but may obscure details of the distribution (the existence of a bimodal distribution, for example), while more may not generalize enough.  Plot a second histogram with 20 bins using the `breaks` argument:  
+
+```{r second histogram}
+# second histogram
+hist(O18, breaks=20)
+```
+
+### Density Plots (or Kernel Plots/Smoothed Histograms) ###
+
+A density plot is a plot of the local relative frequency or density of points along the number line or x-axis of a plot.  The local density is determined by summing the individual "kernel" densities for each point.  Where points occur more frequently, this sum, and consequently the local density, will be greater.  Density plots get around some of the problems that histograms have, but still require some choices to be made.
+
+Density plot of the O18 data.  Note that in this example, an object `O18.density` is created by the `density()` function, and then plotted using the `plot()` function.
+
+```{r density}
+# density plot
+O18_density <- density(O18)
+plot(O18_density)
+```
+
+Plots with both a histogram and density line can be created:
+
+```{r density and histogram}
+# histogram plus density plot
+O18_density <- density(O18)
+hist(O18, breaks=40, probability=TRUE)
+lines(O18_density)
+rug(O18)
+```
+
+Note the addtion of the "rug" plot at the bottom (which is an enumerative plot).
+
+```{r detach}
+# detach the specmap dataframe
+detach(specmap)
+```
+
+### Boxplot (or Box-and-Whisker Plot) ###
+
+A boxplot characterizes the location, dispersion and distribution of a variable by construction a box-like figure with a set of lines (whiskers) extending from the ends of the box.  The edges of the box are drawn at the 25th and 75th percentiles of the data, and a line in the middle of the box marks the 50th percentile.  The whiskers and other aspects of the boxplot are drawn in various ways.
+
+```{r scanvote boxplot}
+# use Scandinavian EU-preference vote data
+attach(scanvote)
+# get a boxplot
+boxplot(Pop)
+```
+
+Note that the plot looks pretty odd, a function of the distribution of the population data.  Typically, the log (base 10) of population data is more informative:
+
+```{r second boxplot}
+# second boxplot
+boxplot(log10(Pop))
+```
+[[Back to top]](lec02.html)
+
+## An Aside on Reference Distributions ##
+
+There are a number of "theoretical" reference distributions that arise in data analysis that can be compared with observed or empirical distributions (i.e. of a set of observations of a particular variable) and used in other ways.  One of the more frequently used reference distributions is the normal distribution (which arises frequently in practice owing to the Central Limit Theorem).
+
+Theoretical distributions are represented by their:
+
+- probability density functions (PDFs) which illustrate the probability (p) of observing different values of a particular variable
+- cumulative distribution functions (CDFs) which illustrate the probability (p) of observing values less than or equal to a specific value of the variable.
+- inverse cumulative distribution functions which illustrate the particular value of a variable that is equaled or exceeded (1-p)x100 percent of the time.
+
+For the standard normal distribution (with mean of 0 and a standard deviation of 1), the PDF and CDF can be displayed as follows:
+
+```{r ref distributions}
+# display the "normal" theoretical reference distribution
+z <- seq(-3.0,3.0,.05)
+pdf_z <- dnorm(z)   # get probability density function
+plot(z, pdf_z)
+cdf_z <- pnorm(z)   # get cumulative distribution function
+plot(z, cdf_z)
+```
+
+and the inverse cumulative distribution function as follows:
+
+```{r inverse csf}
+# inverse cdf
+p <- seq(0,1,.01)
+invcdf_z <- qnorm(p)  
+plot(p,invcdf_z)
+```
+
+### QQ Plot (or QQ Normal Plot) ###
+
+A quantile plot is a two-dimensional graph where each observation is shown by a point, so strictly speaking, a QQ plot is an enumerative plot.  The data value for each point is plotted along the vertical or y-axis, while the equivalent quantile (e.g. a percentile) value is plotted along the horizontal or x-axis.  The quantiles plotted along the x-axis could be empirical ones, like the percentile equivalents or rank for each value, or they could be theoretical ones corresponding to the "p-values" of a reference distribution (e.g. a normal distribution) with the same parameters as the variable being examined.  In practice, the shape of the QQ plot is the issue:
+
+The qqnorm plot plots the data values along the y-axis, and p-values of the normal distribution along the x-axis.  qqline adds a straight line that passes through the first and third quartiles (25th and 75th percentiles) and can be used to assess (a) the overall departure of the observed distribution from a normal distribution with the same parameters (mean and standard deviation) as the observations, and (b) outliers or unsual points.
+
+```{r qqplots}
+# QQ plots
+qqnorm(Pop)
+qqline(Pop)
+qqnorm(log10(Pop))
+qqline(log10(Pop))
+```
+
+Clean up
+```{r detach scanvote}
+detach(scanvote)
+```
+
+# Readings #
+
+- Owen (*The R Guide*):  Ch. 4 & 5, section 6.3
+- Kuhnert & Venebles (*An Introduction...*):  p. 61-76
+- Rossiter (*Introduction ... ITC*):  Ch. 2; sections 3.1-3.3
+- Chang (*R Graphics Cookbook*): Ch. 2, 3, 4, 6
+
+[[Back to top]](lec02.html)
